@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ionic'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
   // Form data for the login modal
@@ -33,8 +33,28 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
+.controller('MessagesCtrl', function($scope) {
+  $scope.messages = [
+    { title: 'Reggae', id: 1 },
+    { title: 'Chill', id: 2 },
+    { title: 'Dubstep', id: 3 },
+    { title: 'Indie', id: 4 },
+    { title: 'Rap', id: 5 },
+    { title: 'Cowbell', id: 6 }
+  ];
+  $scope.data = {
+    showDelete: false
+  };
+  $scope.onItemDelete = function(message) {
+    $scope.messages.splice($scope.messages.indexOf(message), 1);
+  };
+})
+
+.controller('MessageCtrl', function($scope, $stateParams) {
+})
+
+.controller('PeopleCtrl', function($scope) {
+  $scope.people = [
     { title: 'Reggae', id: 1 },
     { title: 'Chill', id: 2 },
     { title: 'Dubstep', id: 3 },
@@ -44,5 +64,14 @@ angular.module('starter.controllers', [])
   ];
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
-});
+.controller('PersonCtrl', function($scope, $stateParams) {
+})
+
+.controller('CityCtrl', function($scope, $stateParams) {
+})
+
+
+
+
+
+
