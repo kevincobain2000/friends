@@ -31,43 +31,62 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       controller: 'AppCtrl'
     })
 
-    .state('app.search', {
-      url: "/search",
+    .state('app.people', {
+      url: "/people",
       views: {
         'menuContent' :{
-          templateUrl: "templates/search.html"
+          templateUrl: "templates/people.html",
+          controller: "PeopleCtrl"
+        }
+      }
+    })
+    .state('app.person', {
+      url: "/people/:personId",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/person.html",
+          controller: "PersonCtrl"
         }
       }
     })
 
-    .state('app.browse', {
-      url: "/browse",
+    .state('app.setting', {
+      url: "/setting",
       views: {
         'menuContent' :{
-          templateUrl: "templates/browse.html"
+          templateUrl: "templates/setting.html"
         }
       }
     })
-    .state('app.playlists', {
-      url: "/playlists",
+    .state('app.settings-city', {
+      url: "/settings/city",
       views: {
         'menuContent' :{
-          templateUrl: "templates/playlists.html",
-          controller: 'PlaylistsCtrl'
+          templateUrl: "templates/settings/city.html",
+          controller: "CityCtrl"
         }
       }
     })
 
-    .state('app.single', {
-      url: "/playlists/:playlistId",
+    .state('app.messages', {
+      url: "/messages",
       views: {
         'menuContent' :{
-          templateUrl: "templates/playlist.html",
-          controller: 'PlaylistCtrl'
+          templateUrl: "templates/messages.html",
+          controller: 'MessagesCtrl'
         }
       }
+    })
+    .state('app.message', {
+      url: "/messages/:messageId",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/message.html",
+          controller: 'MessageCtrl'
+        }
+      },
     });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/people');
 });
 
