@@ -67,7 +67,7 @@ angular.module('starter.controllers', ['ionic', 'ionic.contrib.ui.cards'])
 .controller('MessageCtrl', function($scope, $stateParams) {
 })
 
-.controller('PeopleCtrl', function($scope) {
+.controller('PeopleCtrl', function($scope, $timeout) {
   $scope.people = [
     { title: 'Reggae', id: 1 },
     { title: 'Chill', id: 2 },
@@ -76,6 +76,39 @@ angular.module('starter.controllers', ['ionic', 'ionic.contrib.ui.cards'])
     { title: 'Rap', id: 5 },
     { title: 'Cowbell', id: 6 }
   ];
+
+   $scope.doRefresh = function() {
+    $scope.people = [
+      { title: 'REFRESHED Reggae', id: 1 },
+      { title: 'REFRESHED Chill', id: 2 },
+      { title: 'REFRESHED Dubstep', id: 3 },
+      { title: 'REFRESHED Indie', id: 4 },
+      { title: 'REFRESHED Rap', id: 5 },
+      { title: 'REFRESHED Cowbell', id: 6 }
+    ];
+      console.log('Refreshing!');
+      $timeout( function() {
+        //simulate async response
+        // $scope.items.push('New Item ' + Math.floor(Math.random() * 1000) + 4);
+
+        //Stop the ion-refresher from spinning
+        $scope.$broadcast('scroll.refreshComplete');
+
+      }, 1000);
+    };
+
+  $scope.loadMore = function() {
+    // $http.get('/more-items').success(function(items) {
+      // $scope.people = [  { title: 'Reggae', id: 1 }]
+      $scope.people.push({ title: 'LOAD MORE', id: 100 })
+      $scope.$broadcast('scroll.infiniteScrollComplete');
+    // });
+  };
+
+  $scope.$on('$stateChangeSuccess', function() {
+    $scope.loadMore();
+  });
+
 })
 
 .controller('FriendsCtrl', function($scope) {
