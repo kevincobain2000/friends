@@ -1,0 +1,35 @@
+<ion-view title="Cards">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left"class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+<ion-pane ng-controller="CardsCtrl">
+      <ion-header-bar class="bar-transparent">
+        <h1 class="title">Help Out</h1>
+      </ion-header-bar>
+      <swipe-cards on-card-swipe="onSwipe($event)">
+      <swipe-cards>
+        <swipe-card on-card-swipe="cardSwiped()" id="start-card">
+          swipe me down
+        </swipe-card>
+        <swipe-card ng-repeat="card in cards" on-destroy="cardDestroyed($index)" on-card-swipe="cardSwiped($index)">
+
+          <div ng-controller="CardCtrl">
+            <div class="title">
+              <h5>{{card.title}}</h5>
+            </div>
+            <div class="image">
+              <img ng-src="{{card.image}}">
+            </div>
+            <div class="button-bar">
+              <button class="button button-clear button-positive" ng-click="goAway()">
+                <i class="ion-heart" style="font-size:50px;"></i>
+              </button>
+              <button class="button button-clear button-positive" ng-click="goAway()">
+                <i class="ion-ios7-close" style="font-size:50px;"></i>
+              </button>
+            </div>
+          </div>
+        </swipe-card>
+      </swipe-cards>
+    </ion-pane>
+</ion-view>

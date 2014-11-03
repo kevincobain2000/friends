@@ -9,21 +9,36 @@
 
   <ion-side-menu side="left">
     <header class="bar bar-header bar-stable">
-      <h1 class="title">Left</h1>
+    <img src="http://placehold.it/35x35">
+      <h1 class="title">
+       UserName
+      </h1>
     </header>
     <ion-content class="has-header">
       <ion-list>
         <ion-item nav-clear menu-close ng-click="login()">
-          Login
+          <i class='ion-checkmark-circled'></i> Login
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/cards">
+          <i class='ion-checkmark-circled'></i> Cards
         </ion-item>
         <ion-item nav-clear menu-close href="#/app/people">
-          People
+          <i class='ion-checkmark-circled'></i> People
         </ion-item>
+          <div class="item item-divider">
+            <!-- Activity -->
+          </div>
+          <ion-item nav-clear menu-close href="#/app/friends">
+            <i class='ion-checkmark-circled'></i> Friends & Requests
+          </ion-item>
         <ion-item nav-clear menu-close href="#/app/messages">
-          Messages
+          <i class='ion-checkmark-circled'></i> Messages
         </ion-item>
+        <div class="item item-divider">
+            <!-- Settings -->
+        </div>
         <ion-item nav-clear menu-close href="#/app/setting">
-          Settings
+          <i class='ion-checkmark-circled'></i> Settings
         </ion-item>
       </ion-list>
     </ion-content>
