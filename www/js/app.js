@@ -50,6 +50,26 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     })
 
+    .state('app.friends', {
+      url: "/friends",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/friends.html",
+          controller: "FriendsCtrl"
+        }
+      }
+    })
+
+    .state('app.cards', {
+      url: "/cards",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/cards.html",
+          controller: "CardsCtrl"
+        }
+      }
+    })
+
     .state('app.setting', {
       url: "/setting",
       views: {
