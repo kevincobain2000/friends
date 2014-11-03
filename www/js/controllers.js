@@ -123,6 +123,24 @@ angular.module('starter.controllers', ['ionic', 'ionic.contrib.ui.cards'])
 })
 
 .controller('PersonCtrl', function($scope, $stateParams) {
+
+   var mySwiper = new Swiper('#swiper-photos',{
+      //Your options here:
+      mode:'horizontal',
+      loop: true,
+    }); 
+    var mySwiper = new Swiper('#swiper-interests',{
+      //Your options here:
+      mode:'horizontal',
+      // loop: true,
+      slidesPerView: 5,
+    }); 
+    var mySwiper = new Swiper('#swiper-mutual-friends',{
+      //Your options here:
+      mode:'horizontal',
+      // loop: true,
+      slidesPerView: 5,
+    }); 
 })
 
 .controller('CityCtrl', function($scope, $stateParams) {

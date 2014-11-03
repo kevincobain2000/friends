@@ -122,3 +122,14 @@
 .swipe-card.pop-in {
   -webkit-animation: bounceIn 0.3s ease-out;
 }
+
+
+/*Swiper*/
+.swiper-container, .swiper-slide {
+  width: 500px;
+  height: 200px;
+}
+
+/*utils*/
+.circled {
+  border-radius: 75px; }
