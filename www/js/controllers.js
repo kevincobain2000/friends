@@ -13,6 +13,22 @@ angular.module('starter.controllers', ['ionic', 'ionic.contrib.ui.cards'])
   }
 })
 
+.directive('elastic', [
+    '$timeout',
+    function($timeout) {
+      return {
+        restrict: 'A',
+        link: function($scope, element) {
+          var resize = function() {
+            return element[0].style.height = "" + element[0].scrollHeight + "px";
+          };
+          element.on("blur keyup change", resize);
+          $timeout(resize, 0);
+        }
+      };
+    }
+  ])
+
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
   // Form data for the login modal
@@ -47,7 +63,27 @@ angular.module('starter.controllers', ['ionic', 'ionic.contrib.ui.cards'])
   };
 })
 
-.controller('MessagesCtrl', function($scope) {
+.controller('UserCtrl', function($scope) {
+
+    var mySwiper = new Swiper('#swiper-photos',{
+      //Your options here:
+      mode:'horizontal',
+      loop: true,
+    }); 
+    var mySwiper = new Swiper('#swiper-interests',{
+      //Your options here:
+      mode:'horizontal',
+      // loop: true,
+      slidesPerView: 5,
+    }); 
+    var mySwiper = new Swiper('#swiper-mutual-friends',{
+      //Your options here:
+      mode:'horizontal',
+      // loop: true,
+      slidesPerView: 5,
+    }); 
+})
+.controller('MessagesCtrl', function($scope, $timeout) {
   $scope.messages = [
     { title: 'Reggae', id: 1 },
     { title: 'Chill', id: 2 },
@@ -62,6 +98,28 @@ angular.module('starter.controllers', ['ionic', 'ionic.contrib.ui.cards'])
   $scope.onItemDelete = function(message) {
     $scope.messages.splice($scope.messages.indexOf(message), 1);
   };
+
+  $scope.doRefresh = function() {
+    $scope.messages = [
+      { title: 'REFRESHED Reggae', id: 1 },
+      { title: 'REFRESHED Chill', id: 2 },
+      { title: 'REFRESHED Dubstep', id: 3 },
+      { title: 'REFRESHED Indie', id: 4 },
+      { title: 'REFRESHED Rap', id: 5 },
+      { title: 'REFRESHED Cowbell', id: 6 }
+    ];
+      console.log('Refreshing!');
+      $timeout( function() {
+        //simulate async response
+        // $scope.items.push('New Item ' + Math.floor(Math.random() * 1000) + 4);
+
+        //Stop the ion-refresher from spinning
+        $scope.$broadcast('scroll.refreshComplete');
+
+      }, 1000);
+    };
+
+
 })
 
 .controller('MessageCtrl', function($scope, $stateParams) {
