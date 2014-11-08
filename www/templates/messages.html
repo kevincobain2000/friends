@@ -7,6 +7,10 @@
     <button class="button button-icon icon ion-ios7-minus-outline" ng-click="data.showDelete = !data.showDelete"> </button>
   </ion-nav-buttons>
   <ion-content class="has-header">
+  <ion-refresher on-refresh="doRefresh()"
+                     pulling-text="Pull to refresh..."
+                     refreshing-text="Refreshing!"
+                     refreshing-icon="ion-loading-c"></ion-refresher>
     <ion-list show-delete="data.showDelete">
       <ion-item ng-repeat="message in messages" ng-href="#/app/messages/:messageId">
         <h2>{{message.title}}</h2>

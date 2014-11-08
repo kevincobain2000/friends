@@ -31,6 +31,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       controller: 'AppCtrl'
     })
 
+    .state('app.user', {
+      url: "/user",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/user.html",
+          controller: "UserCtrl"
+        }
+      }
+    })
     .state('app.people', {
       url: "/people",
       views: {

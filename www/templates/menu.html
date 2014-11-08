@@ -9,16 +9,13 @@
 
   <ion-side-menu side="left">
     <header class="bar bar-header bar-stable">
-    <img src="http://placehold.it/35x35">
-      <h1 class="title">
-       UserName
-      </h1>
+      <img src="http://placehold.it/35x35">
+      <h2 class="title">
+        UserName
+      </h2>
     </header>
     <ion-content class="has-header">
       <ion-list>
-        <ion-item nav-clear menu-close ng-click="login()">
-          <i class='ion-checkmark-circled'></i> Login
-        </ion-item>
         <ion-item nav-clear menu-close href="#/app/cards">
           <i class='ion-checkmark-circled'></i> Cards
         </ion-item>
@@ -37,6 +34,9 @@
         <div class="item item-divider">
             <!-- Settings -->
         </div>
+        <ion-item nav-clear menu-close href="#/app/user">
+          <i class='ion-checkmark-circled'></i> My Profile
+        </ion-item>
         <ion-item nav-clear menu-close href="#/app/setting">
           <i class='ion-checkmark-circled'></i> Settings
         </ion-item>
