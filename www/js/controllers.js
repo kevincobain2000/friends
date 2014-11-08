@@ -186,17 +186,6 @@ angular.module('starter.controllers', ['ionic', 'ionic.contrib.ui.cards'])
 
 })
 
-.controller('FriendsCtrl', function($scope) {
-  $scope.friends = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
-})
-
 .controller('PersonCtrl', function($scope, $stateParams) {
 
    var mySwiper = new Swiper('#swiper-photos',{
