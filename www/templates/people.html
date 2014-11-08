@@ -8,8 +8,8 @@
                      refreshing-text="Refreshing!"
                      refreshing-icon="ion-loading-c"></ion-refresher>
     <ion-list>
-      <ion-item ng-repeat="person in people" href="#/app/people/{{person.id}}" class="item item-thumbnail-left item-icon-right">
-        <img src="http://placehold.it/150x150"> <i class="icon ion-ios7-arrow-right"></i>
+      <ion-item ng-repeat="person in people" href="#/app/people/{{person.id}}" class="item item-icon-right item-avatar">
+        <img src="http://lorempixel.com/320/200/people/" >
         <h2>{{person.title}}</h2>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -19,7 +19,6 @@
         cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
         proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </p>
-        <p class="small">2 min</p>
       </ion-item>
     </ion-list>
     <ion-infinite-scroll on-infinite="loadMore()" distance="1%"></ion-infinite-scroll>

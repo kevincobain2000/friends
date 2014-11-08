@@ -7,7 +7,7 @@
   <ion-tab title="Friends" icon-on="ion-ios7-filing tabs-icon-top" icon-off="ion-ios7-filing-outline">
     <ion-content>
       <ion-list>
-      <ion-item ng-repeat="person in friends" href="#/app/people/{{person.id}}" class="item item-thumbnail-left item-icon-right">
+      <ion-item ng-repeat="person in friends" href="#/app/people/{{person.id}}" class="item item-avatar item-icon-right">
         <img src="http://placehold.it/150x150">
         <i class="icon ion-ios7-arrow-right"></i>
         <h2>{{person.title}}</h2>
@@ -17,7 +17,6 @@
         consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
         cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
         proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p class="small">2 min</p>
       </ion-item>
     </ion-list>
   </ion-content>
@@ -25,10 +24,12 @@
 
   <ion-tab title="Requested" icon-on="ion-ios7-clock" icon-off="ion-ios7-clock-outline">
     <!-- Tab 2 content -->
+    Tab 2 Content
   </ion-tab>
 
   <ion-tab title="Settings" icon-on="ion-ios7-gear" icon-off="ion-ios7-gear-outline">
     <!-- Tab 3 content -->
+    Tab 3 Content
   </ion-tab>
 
 </ion-tabs>
