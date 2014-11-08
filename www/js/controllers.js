@@ -30,7 +30,9 @@ angular.module('starter.controllers', ['ionic', 'ionic.contrib.ui.cards'])
   ])
 
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $location) {
+
+
   // Form data for the login modal
   $scope.loginData = {};
 
@@ -61,6 +63,20 @@ angular.module('starter.controllers', ['ionic', 'ionic.contrib.ui.cards'])
       $scope.closeLogin();
     }, 1000);
   };
+
+
+  $scope.$watch(function() { return $location.path(); }, function(newValue, oldValue){  
+    // if ($scope.loggedIn == false && newValue != '/login'){
+    if (1){
+          $ionicModal.fromTemplateUrl('templates/login.html', {
+        scope: $scope
+      }).then(function(modal) {
+        $scope.modal = modal;
+        // $scope.modal.show();
+      });
+    }
+  });
+
 })
 
 .controller('UserCtrl', function($scope) {
@@ -73,13 +89,13 @@ angular.module('starter.controllers', ['ionic', 'ionic.contrib.ui.cards'])
     var mySwiper = new Swiper('#swiper-interests',{
       //Your options here:
       mode:'horizontal',
-      // loop: true,
+      loop: true,
       slidesPerView: 5,
     }); 
     var mySwiper = new Swiper('#swiper-mutual-friends',{
       //Your options here:
       mode:'horizontal',
-      // loop: true,
+      loop: true,
       slidesPerView: 5,
     }); 
 })
@@ -186,17 +202,18 @@ angular.module('starter.controllers', ['ionic', 'ionic.contrib.ui.cards'])
       //Your options here:
       mode:'horizontal',
       loop: true,
+      // slidesPerView: 2,
     }); 
     var mySwiper = new Swiper('#swiper-interests',{
       //Your options here:
       mode:'horizontal',
-      // loop: true,
+      loop: true,
       slidesPerView: 5,
     }); 
     var mySwiper = new Swiper('#swiper-mutual-friends',{
       //Your options here:
       mode:'horizontal',
-      // loop: true,
+      loop: true,
       slidesPerView: 5,
     }); 
 })

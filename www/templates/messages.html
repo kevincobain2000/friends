@@ -12,9 +12,10 @@
                      refreshing-text="Refreshing!"
                      refreshing-icon="ion-loading-c"></ion-refresher>
     <ion-list show-delete="data.showDelete">
-      <ion-item ng-repeat="message in messages" ng-href="#/app/messages/:messageId">
+      <ion-item ng-repeat="message in messages" ng-href="#/app/messages/:messageId"  class="item item-icon-right item-avatar">
+        <img src="http://placehold.it/150x150"> <i class="icon ion-fireball positive"></i>
         <h2>{{message.title}}</h2>
-        <p>{{message.description}}</p>
+        <p>{{message.description}} Hi How are you ?</p>
         <ion-delete-button class="icon ion-minus-circled" ng-click="onItemDelete(message)"></ion-delete-button>
 
       </ion-item>
