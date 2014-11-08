@@ -67,8 +67,9 @@ angular.module('starter.controllers', ['ionic', 'ionic.contrib.ui.cards'])
 
   $scope.$watch(function() { return $location.path(); }, function(newValue, oldValue){  
     // if ($scope.loggedIn == false && newValue != '/login'){
-    if (1){
-          $ionicModal.fromTemplateUrl('templates/login.html', {
+    if (1)
+    {
+        $ionicModal.fromTemplateUrl('templates/login.html', {
         scope: $scope
       }).then(function(modal) {
         $scope.modal = modal;
