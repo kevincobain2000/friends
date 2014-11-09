@@ -19,6 +19,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       StatusBar.styleDefault();
     }
   });
+  openFB.init({appId: '612020265575331'});
+
+    //   FB.init({
+    //       appId      : '612020265575331',
+    //       cookie     : true,  // enable cookies to allow the server to access 
+    //                           // the session
+    //       xfbml      : true,  // parse social plugins on this page
+    //       version    : 'v2.2' // use version 2.1
+    // });
+
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
