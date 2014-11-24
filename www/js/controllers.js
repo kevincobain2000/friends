@@ -30,8 +30,13 @@ angular.module('starter.controllers', ['ionic', 'ionic.contrib.ui.cards'])
   ])
 
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $location) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $location, ezfb) {
 
+
+  ezfb.getLoginStatus(function (res) {
+    $scope.loginStatus = res;
+    console.log(res)
+  });
 
   // Form data for the login modal
   $scope.loginData = {};

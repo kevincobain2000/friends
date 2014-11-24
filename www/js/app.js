@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('starter', ['ionic', 'starter.controllers', 'ezfb'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -21,6 +21,17 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   });
   // openFB.init({appId: '612020265575331'});
 
+})
+
+.config(function (ezfbProvider) {
+  ezfbProvider.setInitParams({
+    // This is my FB app id for plunker demo app
+    appId: '612020265575331',
+    // Module default is `v1.0`.
+    // If you want to use Facebook platform `v2.0`, you'll have to add the following parameter.
+    // https://developers.facebook.com/docs/javascript/reference/FB.init/v2.0
+    version: 'v2.0'
+  })
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
