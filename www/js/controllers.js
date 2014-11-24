@@ -30,75 +30,20 @@ angular.module('starter.controllers', ['ionic', 'ionic.contrib.ui.cards'])
   ])
 
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $location, ezfb) {
-
+.controller('AppCtrl', function($scope, $state, ezfb) {
+  // $state.go('app.login');
 
   ezfb.getLoginStatus(function (res) {
     $scope.loginStatus = res;
-    console.log(res)
+
   });
 
-  // Form data for the login modal
-  $scope.loginData = {};
+})
 
-  // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
-    scope: $scope
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
-
-  // Triggered in the login modal to close it
-  $scope.closeLogin = function() {
-    $scope.modal.hide();
-  };
-
-  // Open the login modal
-  $scope.login = function() {
-    $scope.modal.show();
-  };
-
-  // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
-
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
-  };
-
-
-  $scope.$watch(function() { return $location.path(); }, function(newValue, oldValue){  
-    // if ($scope.loggedIn == false && newValue != '/login'){
-    if (1)
-    {
-        $ionicModal.fromTemplateUrl('templates/login.html', {
-        scope: $scope
-      }).then(function(modal) {
-        $scope.modal = modal;
-        // $scope.modal.show();
-      });
-    }
-  });
-
-  // $scope.fbLogin = function() {
-  //   openFB.login(
-  //       function(response) {
-  //           if (response.status === 'connected') {
-  //               console.log('Facebook login succeeded');
-  //               $scope.closeLogin();
-  //           } else {
-  //               alert('Facebook login failed');
-  //           }
-  //       },
-  //       {scope: 'email'});
-  // }
-
-
-
-
+.controller('LoginCtrl', function($scope) {
+  $scope.fbLogin = function() {
+    console.log("FB Login Button Clicked")
+  }
 })
 
 .controller('UserCtrl', function($scope) {
@@ -107,19 +52,17 @@ angular.module('starter.controllers', ['ionic', 'ionic.contrib.ui.cards'])
       //Your options here:
       mode:'horizontal',
       loop: true,
-    }); 
+    });
     var mySwiper = new Swiper('#swiper-interests',{
-      //Your options here:
       mode:'horizontal',
       loop: true,
       slidesPerView: 5,
-    }); 
+    });
     var mySwiper = new Swiper('#swiper-mutual-friends',{
-      //Your options here:
       mode:'horizontal',
       loop: true,
       slidesPerView: 5,
-    }); 
+    });
 })
 .controller('MessagesCtrl', function($scope, $timeout) {
   $scope.messages = [
@@ -138,20 +81,16 @@ angular.module('starter.controllers', ['ionic', 'ionic.contrib.ui.cards'])
   };
 
   $scope.doRefresh = function() {
-    $scope.messages = [
-      { title: 'REFRESHED Reggae', id: 1 },
-      { title: 'REFRESHED Chill', id: 2 },
-      { title: 'REFRESHED Dubstep', id: 3 },
-      { title: 'REFRESHED Indie', id: 4 },
-      { title: 'REFRESHED Rap', id: 5 },
-      { title: 'REFRESHED Cowbell', id: 6 }
-    ];
-      console.log('Refreshing!');
       $timeout( function() {
-        //simulate async response
-        // $scope.items.push('New Item ' + Math.floor(Math.random() * 1000) + 4);
+        $scope.messages = [
+          { title: 'REFRESHED Reggae', id: 1 },
+          { title: 'REFRESHED Chill', id: 2 },
+          { title: 'REFRESHED Dubstep', id: 3 },
+          { title: 'REFRESHED Indie', id: 4 },
+          { title: 'REFRESHED Rap', id: 5 },
+          { title: 'REFRESHED Cowbell', id: 6 }
+        ];
 
-        //Stop the ion-refresher from spinning
         $scope.$broadcast('scroll.refreshComplete');
 
       }, 1000);
@@ -170,24 +109,30 @@ angular.module('starter.controllers', ['ionic', 'ionic.contrib.ui.cards'])
     { title: 'Dubstep', id: 3 },
     { title: 'Indie', id: 4 },
     { title: 'Rap', id: 5 },
+    { title: 'Cowbell', id: 6 },
+    { title: 'Cowbell', id: 6 },
+    { title: 'Cowbell', id: 6 },
+    { title: 'Cowbell', id: 6 },
+    { title: 'Cowbell', id: 6 },
     { title: 'Cowbell', id: 6 }
   ];
 
    $scope.doRefresh = function() {
-    $scope.people = [
-      { title: 'REFRESHED Reggae', id: 1 },
-      { title: 'REFRESHED Chill', id: 2 },
-      { title: 'REFRESHED Dubstep', id: 3 },
-      { title: 'REFRESHED Indie', id: 4 },
-      { title: 'REFRESHED Rap', id: 5 },
-      { title: 'REFRESHED Cowbell', id: 6 }
-    ];
+
       console.log('Refreshing!');
       $timeout( function() {
         //simulate async response
         // $scope.items.push('New Item ' + Math.floor(Math.random() * 1000) + 4);
 
         //Stop the ion-refresher from spinning
+        $scope.people = [
+          { title: 'REFRESHED Reggae', id: 1 },
+          { title: 'REFRESHED Chill', id: 2 },
+          { title: 'REFRESHED Dubstep', id: 3 },
+          { title: 'REFRESHED Indie', id: 4 },
+          { title: 'REFRESHED Rap', id: 5 },
+          { title: 'REFRESHED Cowbell', id: 6 }
+        ];
         $scope.$broadcast('scroll.refreshComplete');
 
       }, 1000);
@@ -195,9 +140,17 @@ angular.module('starter.controllers', ['ionic', 'ionic.contrib.ui.cards'])
 
   $scope.loadMore = function() {
     // $http.get('/more-items').success(function(items) {
-      // $scope.people = [  { title: 'Reggae', id: 1 }]
-      $scope.people.push({ title: 'LOAD MORE', id: 100 })
-      $scope.$broadcast('scroll.infiniteScrollComplete');
+      $timeout( function() {
+        //Stop the ion-refresher from spinning
+        $scope.people.push(
+                            { title: 'LOAD MORE', id: 100 },
+                            { title: 'LOAD MORE', id: 100 },
+                            { title: 'LOAD MORE', id: 100 },
+                            { title: 'LOAD MORE', id: 100 }
+                            )
+        $scope.$broadcast('scroll.infiniteScrollComplete');
+
+      }, 1000);
     // });
   };
 
