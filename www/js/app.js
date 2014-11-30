@@ -4,7 +4,20 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'ezfb'])
+angular.module('starter', ['ionic', 'starter.controllers', 'ezfb', 'ui.router','auth0'])
+
+.config(function ($stateProvider, $urlRouterProvider, authProvider) {
+    authProvider.init({
+      domain: 'friends.auth0.com',
+      clientID: 'Tk5azmFBScc1Udc59MZNwxW8JHS5MhHo',
+      callbackURL: location.href,
+      loginState: 'login'
+    });
+})
+.run(function(auth) {
+  // Hook auth0-angular to all the events it needs to listen to
+  auth.hookEvents();
+})
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -17,6 +30,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ezfb'])
     if(window.StatusBar) {
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
+      // StatusBar.hide();
     }
   });
   // openFB.init({appId: '612020265575331'});
@@ -41,7 +55,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ezfb'])
       url: "/app",
       abstract: true,
       templateUrl: "templates/menu.html",
-      controller: 'AppCtrl'
+      controller: 'AppCtrl',
     })
 
     .state('app.user', {
@@ -69,7 +83,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ezfb'])
         'menuContent' :{
           templateUrl: "templates/people.html",
           controller: "PeopleCtrl"
-        }
+        },
       }
     })
     .state('app.person', {
