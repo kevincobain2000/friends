@@ -40,10 +40,30 @@ angular.module('starter.controllers', ['ionic', 'ionic.contrib.ui.cards'])
 
 })
 
-.controller('LoginCtrl', function($scope) {
-  $scope.fbLogin = function() {
-    console.log("FB Login Button Clicked")
-  }
+.controller('LoginCtrl', function($scope, auth, $state) {
+  // $scope.fbLogin = function() {
+  //   console.log("FB Login Button Clicked")
+  // }
+
+
+    auth.signin({
+      // This is a must for mobile projects
+      popup: true,
+      // Make the widget non closeable
+      standalone: true,
+      // This asks for the refresh token
+      // So that the user never has to log in again
+      offline_mode: true,
+      device: 'Phone'
+    }, function() {
+      // Login was successful
+      console.log("There was an error logging in");
+      $state.go('app.login');
+    }, function(error) {
+      // Oops something went wrong during login:
+      console.log("There was an error logging in", error);
+    });
+
 })
 
 .controller('UserCtrl', function($scope) {
