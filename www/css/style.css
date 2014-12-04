@@ -132,4 +132,11 @@
 
 /*utils*/
 .circled {
-  border-radius: 75px; }
+  border-radius: 75px; 
+}
+
+/*Overrides*/
+.nav-title-slide-ios:not(.no-animation) .button.back-button, .nav-title-slide-ios7:not(.no-animation) .button.back-button {
+  color:blue;
+  font-style: bold;
+}
