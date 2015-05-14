@@ -4,20 +4,11 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'ezfb', 'ui.router','auth0'])
+angular.module('starter', ['ionic', 'starter.controllers', 'ezfb', 'ui.router'])
 
-.config(function ($stateProvider, $urlRouterProvider, authProvider) {
-    authProvider.init({
-      domain: 'friends.auth0.com',
-      clientID: 'Tk5azmFBScc1Udc59MZNwxW8JHS5MhHo',
-      callbackURL: location.href,
-      loginState: 'login'
-    });
+.config(function ($stateProvider, $urlRouterProvider) {
 })
-.run(function(auth) {
-  // Hook auth0-angular to all the events it needs to listen to
-  auth.hookEvents();
-})
+
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
